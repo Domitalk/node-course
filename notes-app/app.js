@@ -10,3 +10,5 @@ fs.writeFileSync('notes.txt', 'My name is Dom')
 // Use appendFileSync to the file 
 // Run the script 
 // Check file for changes 
+
+fs.appendFileSync('notes.txt', 'appended text')
