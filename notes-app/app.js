@@ -4,3 +4,9 @@ const fs = require('fs')
 fs.writeFileSync('notes.txt', 'My name is Dom')
 // this won't work without loading fs first 
 
+
+// Challenge: Append a message to notes.txt 
+
+// Use appendFileSync to the file 
+// Run the script 
+// Check file for changes 
