@@ -52,6 +52,23 @@
 // 4. test work 
 // bonus: use docs to mess with other styles, make text bold and inversed  
 
-const chalk = require('chalk'); 
+// const chalk = require('chalk'); 
 
-console.log(chalk.green.bold.inverse('Success!'))
+// console.log(chalk.green.bold.inverse('Success!'))
+
+
+// 5. using argv 
+const chalk = require('chalk')
+const getNotes = require('./notes.js')
+
+const command = process.argv[2]
+
+console.log(process.argv)
+
+if (command === 'add') {
+    console.log('Adding note!')
+} else if (command === 'remove') {
+    console.log('Removing note!')
+}
+
+// console.log(process.argv[2])
