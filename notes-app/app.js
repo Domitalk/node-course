@@ -1,9 +1,32 @@
 // 5. using argv 
 const chalk = require('chalk')
-const yargs = require('yargs/yargs')
-const { hideBin } = require('yargs/helpers')
+const yargs = require('yargs')
 
 const getNotes = require('./notes.js')
+
+// console.log(yargs.command)
+
+yargs.command({
+    command: 'add',
+    describe: 'adding a note', 
+    handler: function () {
+        console.log('Adding a note!')
+    }
+}).argv 
+
+// create a remove command 
+
+yargs.command({
+    command: 'remove', 
+    describe: 'removing a note', 
+    handler: function () {
+        console.log('Removing a note!')
+    }
+}).argv 
+
+
+
+
 
 // yargs 
 // node app.js --title="Hey" 
@@ -12,32 +35,12 @@ const getNotes = require('./notes.js')
 // const command = process.argv[2]
 
 // console.log(process.argv)
-// console.log(yargs.argv)
 
 // if (command === 'add') {
 //     console.log('Adding note!')
 // } else if (command === 'remove') {
 //     console.log('Removing note!')
 // }
-
-// yargs.version('1.1.0')
-
-yargs(hideBin(process.argv))
-    .command(
-        'add',
-        'Add a note',
-        () => {console.log('Adding a note!')}
-    )
-
-// yargs.command({
-//     command: 'remove', 
-//     describe: 'Remove a note', 
-//     handler: function () {
-//         console.log('Removing the note')
-//     }
-// })
-
-// console.log(process.argv[2])
 
 
 
