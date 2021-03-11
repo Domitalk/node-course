@@ -54,11 +54,18 @@ yargs.command({
 })
 
 // list command 
+// 1. create and export listNotes from notes.js
+//  - "Your notes" using chalk
+//  - Print note title for each note 
+// 2. call listNotes from command handler 
+// 3. test 
+
 yargs.command({
     command: 'list', 
     describe: 'list notes',
     handler() {
-        console.log(`Listing notes!`)
+        notes.listNotes()
+        // console.log(`Listing notes!`)
     }
 })
 

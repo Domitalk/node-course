@@ -1,4 +1,6 @@
 const fs = require('fs')
+const chalk = require('chalk')
+
 
 const getNotes = () => {
     return 'Your notes...'
@@ -20,7 +22,6 @@ const addNote = (title, body) => {
     }
 }
 
-// 2. create and export removeNote func from notes.js 
 const removeNote = (title) => {
     const notes = loadNotes() 
     const filteredNotes = notes.filter((note) => note.title !== title)
@@ -33,6 +34,13 @@ const removeNote = (title) => {
     }
 }
 
+const listNotes = () => {
+    const notes = loadNotes() 
+    console.log(chalk.blue("Your notes"))
+    notes.forEach((note) => {
+        console.log(chalk.red(note.title))
+    })
+}
 
 
 // helpers 
@@ -55,6 +63,7 @@ const loadNotes = () => {
 module.exports = {
     getNotes, 
     addNote, 
-    removeNote
+    removeNote, 
+    listNotes 
 }
  
