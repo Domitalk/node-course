@@ -8,9 +8,13 @@ const getNotes = () => {
 
 const addNote = (title, body) => {
     const notes = loadNotes()
-    const duplicateNotes = notes.filter((note) => note.title === title)
+
+    // const duplicateNotes = notes.filter((note) => note.title === title)
+
+    // changed to stop iteration once a match is found
+    const duplicateNote = notes.find((note) => note.title === title)
     
-    if (duplicateNotes.length === 0) {
+    if (!duplicateNote) {
         notes.push({
             title, 
             body
@@ -41,6 +45,21 @@ const listNotes = () => {
         console.log(chalk.red(note.title))
     })
 }
+// 2. create readNote in notes.js
+//  - Search for note by title 
+//  - Find note and print title(styled) and body(plain) 
+//  - No note found? Print error in red
+
+const readNote = (title) => {
+    const notes = loadNotes() 
+    const targetNote = notes.find((note) => note.title === title)
+    if (targetNote) {
+        console.log(chalk.inverse(targetNote.title))
+        console.log(targetNote.body)
+    } else {
+        console.log(chalk.red("There wasn't a note with that title"))
+    }
+}
 
 
 // helpers 
@@ -64,6 +83,7 @@ module.exports = {
     getNotes, 
     addNote, 
     removeNote, 
-    listNotes 
+    listNotes, 
+    readNote
 }
  

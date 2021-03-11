@@ -70,11 +70,27 @@ yargs.command({
 })
 
 // read command 
+// 1. setup --title option 
+// 2. create readNote in notes.js
+//  - Search for note by title 
+//  - Find note and print title(styled) and body(plain) 
+//  - No note found? Print error in red
+// 3. Have the command handler call the func
+// 4. Test work both ways 
+
 yargs.command({
     command: 'read', 
     describe: 'read notes', 
-    handler() {
-        console.log('Reading notes!')
+    builder: {
+        title: {
+            describe: 'Note title',
+            demandOption: true, 
+            type: 'string'
+        }
+    },
+    handler(argv) {
+        notes.readNote(argv.title)
+        // console.log('Reading notes!')
     }
 })
 
