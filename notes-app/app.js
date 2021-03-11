@@ -2,7 +2,7 @@
 const chalk = require('chalk')
 const yargs = require('yargs')
 
-const getNotes = require('./notes.js')
+const notes = require('./notes.js')
 
 // console.log(yargs.command)
 // node app.js add --title="titleName" 
@@ -22,24 +22,41 @@ yargs.command({
         }
     }, 
     handler: function (argv) {
-        console.log('Title: ' + argv.title)
-        console.log('Body: ' + argv.body)
+        // console.log('Title: ' + argv.title)
+        // console.log('Body: ' + argv.body)
+        notes.addNote(argv.title, argv.body)
     }
 })
+
+// Challenge: setup command option and function 
+
+// 1. setup the remove command to take a req title 
+// 2. create and export removeNote func from notes.js 
+// 3. call removeNote in remove command handler 
+// 4. have removeNote log the title of the note that was removed 
+// 5. test your work 
 
 // create a remove command 
 yargs.command({
     command: 'remove', 
     describe: 'removing a note', 
-    handler: function () {
-        console.log('Removing a note!')
+    builder: {
+        title: {
+            describe: 'Note title',
+            demandOption: true, 
+            type: 'string'
+        }
+    },
+    handler: function (argv) {
+        notes.removeNote(argv.title)
+        // console.log('Removing a note!')
     }
 })
 
 // list command 
 yargs.command({
     command: 'list', 
-    describe: 'list notes', 
+    describe: 'list notes',
     handler: function () {
         console.log(`Listing notes!`)
     }
